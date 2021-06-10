@@ -1,0 +1,22 @@
+<GameInfo>
+	<Parameters>
+		<Row ParameterId="GameMode_OneCity" Name="LOC_GAMEMODE_ONECITY_NAME" Description="LOC_GAMEMODE_ONECITY_DESCRIPTION" Domain="bool" DefaultValue="0" ConfigurationGroup="Game" ConfigurationId="GAMEMODE_ONECITY" NameArrayConfigurationId="GAMEMODES_ENABLED_NAMES" GroupId="GameModes" SortIndex="130"  SupportsSinglePlayer="1" Visible="1" />
+	</Parameters>
+
+	<GameModeItems>
+		<Row GameModeType="GAMEMODE_ONECITY" Name="LOC_GAMEMODE_ONECITY_NAME" Description="LOC_GAMEMODE_ONECITY_DESCRIPTION" Portrait="OneCity_Portrait.dds" Background="OneCity_Background.dds" Icon="ICON_GAMEMODE_ONECITY" UnitIcon="ICON_UNIT_EXPANSIONIST" UnitDescription="LOC_EXPANSIONIST_DESC" UnitName="LOC_EXPANSIONIST_NAME" SortIndex="40" />
+	</GameModeItems>
+
+	<ParameterDependencies>
+		<!-- OCC -->
+		<Row ParameterId="GameMode_OneCity" ConfigurationGroup="Game" ConfigurationId="RULESET" Operator="Equals" ConfigurationValue="RULESET_EXPANSION_2"/>
+		<Row ParameterId="GameMode_OneCity" ConfigurationGroup="Game" ConfigurationId="WORLD_BUILDER" Operator="NotEquals" ConfigurationValue="1"/>
+	</ParameterDependencies>
+
+	<ConfigurationUpdates>
+		<!-- OCC -->
+		<Row SourceGroup="Game" SourceId="GAMEMODE_ONECITY" SourceValue="1" TargetGroup="Game" TargetId="GAME_START_ERA" TargetValue="ERA_ANCIENT"  Static="1"/>
+		<Row SourceGroup="Game" SourceId="GAMEMODE_ONECITY" SourceValue="1" TargetGroup="Game" TargetId="GAME_NO_BARBARIANS" TargetValue="1" Static="1"/>
+	</ConfigurationUpdates>
+
+</GameInfo>

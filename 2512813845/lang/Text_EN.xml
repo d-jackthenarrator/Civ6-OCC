@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+    <LocalizedText>
+        <Replace Tag="LOC_GAMEMODE_ONECITY_NAME" Language="en_US">
+            <Text>One City Challenge Mode</Text>
+        </Replace>
+        <Replace Tag="LOC_GAMEMODE_ONECITY_DESCRIPTION" Language="en_US">
+            <Text>"Thee shall only have one city..." [NEWLINE][NEWLINE]Plan ahead to build an unchallenged military center or a tower of Babel challenging your foes! [NEWLINE][NEWLINE]Cannot train Settler or keep captured cities.</Text>
+        </Replace>
+
+        <Row Tag="LOC_EXPANSIONIST_NAME" Language="en_US">
+            <Text>The Expansionist</Text>
+        </Row>
+        <Row Tag="LOC_EXPANSIONIST_DESC" Language="en_US">
+            <Text>Can build the Outer Wall improvement. [NEWLINE]Unlocked at Early Empire.[NEWLINE][NEWLINE]Increase your territory away from your borders to access resources or setup an outpost.</Text>
+        </Row>
+
+        <Replace Tag="LOC_MOMENT_CATEGORY_INFRASTRUCTURE_BONUS_GOLDEN_AGE" language="en">
+            <Text>Monumentality Golden Age:[NEWLINE]+2 [ICON_Movement] Movement for all Builders. May purchase civilian units with [ICON_Faith] Faith. Builders and Expansionists are 30% cheaper to purchase with [ICON_FAITH] Faith and [ICON_GOLD] Gold.</Text>
+        </Replace>
+         <Replace Tag="LOC_BELIEF_RELIGIOUS_SETTLEMENTS_DESCRIPTION" language="en">
+            <Text>When chosen receive two Expansionists in your capital. Border expansion rate is 15% faster.</Text>
+        </Replace>  
+         <Replace Tag="LOC_UNITCOMMAND_BUILDWALL_NAME" language="en">
+            <Text>Build a protective wall</Text>
+        </Replace> 
+         <Replace Tag="LOC_UNITCOMMAND_BUILDWALL_DESCRIPTION" language="en">
+           <Text>Provide defensive bonus to garnisson units and allow to claim territory outside of your city limits</Text>
+        </Replace> 
+         <Replace Tag="LOC_UNITCOMMAND_BUILDWALL_DISABLED_TT" language="en">
+            <Text>Cannot be build on claimed territory, impassable terrain, cities or districts</Text>
+        </Replace> 	
+         <Replace Tag="LOC_IMPROVEMENT_OCC_WALL_NAME" language="en">
+            <Text>Outer Walls</Text>
+        </Replace> 	
+         <Replace Tag="LOC_IMPROVEMENT_OCC_WALL_DESC" language="en">
+            <Text>Use this improvement to claim territory and protect your troups.</Text>
+        </Replace> 	
+		 <Replace Tag="LOC_SCENARIO_HUD_CHARGES" language="en">
+		    <Text>OUTER WALL CHARGES</Text>
+        </Replace> 			
+    </LocalizedText>
+</GameData>
