@@ -148,3 +148,239 @@ WHERE Name = 'CITY_AMENITIES_FOR_FREE';
 UPDATE GlobalParameters
 SET Value = '12' 
 WHERE Name = 'CITY_GROWTH_THRESHOLD';
+
+-----------------------------------------------
+-- Governor
+-----------------------------------------------
+-- Pingala GOVERNOR_THE_EDUCATOR
+DELETE FROM GovernorsCannotAssign
+WHERE GovernorType = 'GOVERNOR_THE_EDUCATOR';
+
+INSERT INTO GovernorsCannotAssign (GovernorType, CannotAssign) VALUES ('GOVERNOR_THE_EDUCATOR', 1);
+
+DELETE FROM GovernorPromotionSets
+WHERE GovernorType = 'GOVERNOR_THE_EDUCATOR';
+
+INSERT INTO Types (Type, Kind) VALUES ('THE_EDUCATOR_LEVEL_0', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_EDUCATOR_LEVEL_1', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_EDUCATOR_LEVEL_2', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_EDUCATOR_LEVEL_3', 'KIND_GOVERNOR_PROMOTION');
+
+INSERT INTO GovernorPromotionSets	(GovernorType, 						GovernorPromotion)
+VALUES  							('GOVERNOR_THE_EDUCATOR',			'THE_EDUCATOR_LEVEL_0'), -- +15% Science
+									('GOVERNOR_THE_EDUCATOR',			'THE_EDUCATOR_LEVEL_1'), -- +10 Science in Capital
+									('GOVERNOR_THE_EDUCATOR',			'THE_EDUCATOR_LEVEL_2'), -- Science on each tiles
+									('GOVERNOR_THE_EDUCATOR',			'THE_EDUCATOR_LEVEL_3'); -- 
+
+INSERT INTO GovernorPromotions		(GovernorPromotionType, 			Name,								Description,						Level,	Column,	BaseAbility)
+VALUES  							('THE_EDUCATOR_LEVEL_0',			'OCC_THE_EDUCATOR_LEVEL_0_NAME',	'OCC_THE_EDUCATOR_LEVEL_0_DESC',	0,		1,		1),
+									('THE_EDUCATOR_LEVEL_1',			'OCC_THE_EDUCATOR_LEVEL_1_NAME',	'OCC_THE_EDUCATOR_LEVEL_1_DESC',	1,		1,		0),
+									('THE_EDUCATOR_LEVEL_2',			'OCC_THE_EDUCATOR_LEVEL_2_NAME',	'OCC_THE_EDUCATOR_LEVEL_2_DESC',	1,		1,		0),
+									('THE_EDUCATOR_LEVEL_3',			'OCC_THE_EDUCATOR_LEVEL_3_NAME',	'OCC_THE_EDUCATOR_LEVEL_3_DESC',	1,		1,		0);
+									
+INSERT INTO GovernorPromotionPrereqs	(GovernorPromotionType, 			PrereqGovernorPromotion)
+VALUES  								('THE_EDUCATOR_LEVEL_1',			'THE_EDUCATOR_LEVEL_0'),
+										('THE_EDUCATOR_LEVEL_2',			'THE_EDUCATOR_LEVEL_1'),
+										('THE_EDUCATOR_LEVEL_3',			'THE_EDUCATOR_LEVEL_2');
+
+INSERT INTO GovernorPromotionConditions	(GovernorPromotionType, 			HiddenWithoutPrereqs,	EarliestGameEra)
+VALUES  								('THE_EDUCATOR_LEVEL_0',			0,						NULL),
+										('THE_EDUCATOR_LEVEL_1',			1,						'ERA_MEDIEVAL'),
+										('THE_EDUCATOR_LEVEL_2',			1,						'ERA_INDUSTRIAL'),
+										('THE_EDUCATOR_LEVEL_3',			1,						'ERA_ATOMIC');
+
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_EDUCATOR_LEVEL_0', 'OCC_MOD_THE_EDUCATOR_LEVEL_0');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_EDUCATOR_LEVEL_1', 'OCC_MOD_THE_EDUCATOR_LEVEL_1');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_EDUCATOR_LEVEL_2', 'OCC_MOD_THE_EDUCATOR_LEVEL_2');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_EDUCATOR_LEVEL_3', 'OCC_MOD_THE_EDUCATOR_LEVEL_3');
+
+INSERT INTO Modifiers 	(ModifierId, 						ModifierType,												OwnerRequirementSetId,	SubjectRequirementSetId) 
+VALUES 					('OCC_MOD_THE_EDUCATOR_LEVEL_0', 	'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER',		NULL,					NULL),	
+						('OCC_MOD_THE_EDUCATOR_LEVEL_1', 	'MODIFIER_PLAYER_CAPITAL_CITY_ADJUST_CITY_YIELD_CHANGE',	NULL,					NULL),	
+						('OCC_MOD_THE_EDUCATOR_LEVEL_2', 	'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',						NULL,					NULL),	
+						('OCC_MOD_THE_EDUCATOR_LEVEL_3', 	'MODIFIER_PLAYER_CAPITAL_CITY_ADJUST_CITY_YIELD_CHANGE',	NULL,					NULL);							
+									
+INSERT INTO ModifierArguments 	(ModifierId, 						Name,				Value) 
+VALUES 							('OCC_MOD_THE_EDUCATOR_LEVEL_0', 	'Amount',			15),
+								('OCC_MOD_THE_EDUCATOR_LEVEL_0', 	'YieldType',		'YIELD_SCIENCE'),
+								('OCC_MOD_THE_EDUCATOR_LEVEL_1', 	'Amount',			10),
+								('OCC_MOD_THE_EDUCATOR_LEVEL_1', 	'YieldType',		'YIELD_SCIENCE'),
+								('OCC_MOD_THE_EDUCATOR_LEVEL_2', 	'Amount',			1),
+								('OCC_MOD_THE_EDUCATOR_LEVEL_2', 	'YieldType',		'YIELD_SCIENCE'),
+								('OCC_MOD_THE_EDUCATOR_LEVEL_3', 	'Amount',			25),
+								('OCC_MOD_THE_EDUCATOR_LEVEL_3', 	'YieldType',		'YIELD_SCIENCE');								
+						
+-- Moksha GOVERNOR_THE_CARDINAL
+DELETE FROM GovernorsCannotAssign
+WHERE GovernorType = 'GOVERNOR_THE_CARDINAL';
+
+INSERT INTO GovernorsCannotAssign (GovernorType, CannotAssign) VALUES ('GOVERNOR_THE_CARDINAL', 1);
+
+DELETE FROM GovernorPromotionSets
+WHERE GovernorType = 'GOVERNOR_THE_CARDINAL';
+
+INSERT INTO Types (Type, Kind) VALUES ('THE_CARDINAL_LEVEL_0', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_CARDINAL_LEVEL_1', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_CARDINAL_LEVEL_2', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_CARDINAL_LEVEL_3', 'KIND_GOVERNOR_PROMOTION');
+
+INSERT INTO GovernorPromotionSets	(GovernorType, 						GovernorPromotion)
+VALUES  							('GOVERNOR_THE_CARDINAL',			'THE_CARDINAL_LEVEL_0'), 
+									('GOVERNOR_THE_CARDINAL',			'THE_CARDINAL_LEVEL_1'), 
+									('GOVERNOR_THE_CARDINAL',			'THE_CARDINAL_LEVEL_2'), 
+									('GOVERNOR_THE_CARDINAL',			'THE_CARDINAL_LEVEL_3'); 
+
+INSERT INTO GovernorPromotions		(GovernorPromotionType, 			Name,								Description,						Level,	Column,	BaseAbility)
+VALUES  							('THE_CARDINAL_LEVEL_0',			'OCC_THE_CARDINAL_LEVEL_0_NAME',	'OCC_THE_CARDINAL_LEVEL_0_DESC',	0,		1,		1),
+									('THE_CARDINAL_LEVEL_1',			'OCC_THE_CARDINAL_LEVEL_1_NAME',	'OCC_THE_CARDINAL_LEVEL_1_DESC',	1,		1,		0),
+									('THE_CARDINAL_LEVEL_2',			'OCC_THE_CARDINAL_LEVEL_2_NAME',	'OCC_THE_CARDINAL_LEVEL_2_DESC',	1,		1,		0),
+									('THE_CARDINAL_LEVEL_3',			'OCC_THE_CARDINAL_LEVEL_3_NAME',	'OCC_THE_CARDINAL_LEVEL_3_DESC',	1,		1,		0);
+									
+INSERT INTO GovernorPromotionPrereqs	(GovernorPromotionType, 			PrereqGovernorPromotion)
+VALUES  								('THE_CARDINAL_LEVEL_1',			'THE_CARDINAL_LEVEL_0'),
+										('THE_CARDINAL_LEVEL_2',			'THE_CARDINAL_LEVEL_1'),
+										('THE_CARDINAL_LEVEL_3',			'THE_CARDINAL_LEVEL_2');
+
+INSERT INTO GovernorPromotionConditions	(GovernorPromotionType, 			HiddenWithoutPrereqs,	EarliestGameEra)
+VALUES  								('THE_CARDINAL_LEVEL_0',			0,						NULL),
+										('THE_CARDINAL_LEVEL_1',			1,						'ERA_MEDIEVAL'),
+										('THE_CARDINAL_LEVEL_2',			1,						'ERA_INDUSTRIAL'),
+										('THE_CARDINAL_LEVEL_3',			1,						'ERA_ATOMIC');
+
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_CARDINAL_LEVEL_0', 'OCC_MOD_THE_CARDINAL_LEVEL_0');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_CARDINAL_LEVEL_1', 'OCC_MOD_THE_CARDINAL_LEVEL_1');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_CARDINAL_LEVEL_2', 'OCC_MOD_THE_CARDINAL_LEVEL_2');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_CARDINAL_LEVEL_3', 'OCC_MOD_THE_CARDINAL_LEVEL_3');
+
+INSERT INTO Modifiers 	(ModifierId, 						ModifierType,												OwnerRequirementSetId,	SubjectRequirementSetId) 
+VALUES 					('OCC_MOD_THE_CARDINAL_LEVEL_0', 	'MODIFIER_PLAYER_ADJUST_GREAT_PERSON_POINTS',				NULL,					NULL),	
+						('OCC_MOD_THE_CARDINAL_LEVEL_1', 	'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',						NULL,					NULL),	
+						('OCC_MOD_THE_CARDINAL_LEVEL_2', 	'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER',		NULL,					NULL),	
+						('OCC_MOD_THE_CARDINAL_LEVEL_3', 	'MODIFIER_PLAYER_ADJUST_TOURISM',							NULL,					NULL);							
+									
+INSERT INTO ModifierArguments 	(ModifierId, 						Name,					Value) 
+VALUES 							('OCC_MOD_THE_CARDINAL_LEVEL_0', 	'Amount',				5),
+								('OCC_MOD_THE_CARDINAL_LEVEL_0', 	'GreatPersonClassType',	'GREAT_PERSON_CLASS_PROPHET'),
+								('OCC_MOD_THE_CARDINAL_LEVEL_1', 	'Amount',				1),
+								('OCC_MOD_THE_CARDINAL_LEVEL_1', 	'YieldType',			'YIELD_CULTURE'),
+								('OCC_MOD_THE_CARDINAL_LEVEL_2', 	'Amount',				25),
+								('OCC_MOD_THE_CARDINAL_LEVEL_2', 	'YieldType',			'YIELD_FAITH'),
+								('OCC_MOD_THE_CARDINAL_LEVEL_3', 	'Amount',				200);				
+
+-- Fat Liang GOVERNOR_THE_BUILDER
+DELETE FROM GovernorsCannotAssign
+WHERE GovernorType = 'GOVERNOR_THE_BUILDER';
+
+INSERT INTO GovernorsCannotAssign (GovernorType, CannotAssign) VALUES ('GOVERNOR_THE_BUILDER', 1);
+
+DELETE FROM GovernorPromotionSets
+WHERE GovernorType = 'GOVERNOR_THE_BUILDER';
+
+INSERT INTO Types (Type, Kind) VALUES ('THE_BUILDER_LEVEL_0', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_BUILDER_LEVEL_1', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_BUILDER_LEVEL_2', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_BUILDER_LEVEL_3', 'KIND_GOVERNOR_PROMOTION');
+
+INSERT INTO GovernorPromotionSets	(GovernorType, 						GovernorPromotion)
+VALUES  							('GOVERNOR_THE_BUILDER',			'THE_BUILDER_LEVEL_0'), 
+									('GOVERNOR_THE_BUILDER',			'THE_BUILDER_LEVEL_1'), 
+									('GOVERNOR_THE_BUILDER',			'THE_BUILDER_LEVEL_2'), 
+									('GOVERNOR_THE_BUILDER',			'THE_BUILDER_LEVEL_3'); 
+
+INSERT INTO GovernorPromotions		(GovernorPromotionType, 			Name,								Description,						Level,	Column,	BaseAbility)
+VALUES  							('THE_BUILDER_LEVEL_0',				'OCC_THE_BUILDER_LEVEL_0_NAME',		'OCC_THE_BUILDER_LEVEL_0_DESC',	0,		1,		1),
+									('THE_BUILDER_LEVEL_1',				'OCC_THE_BUILDER_LEVEL_1_NAME',		'OCC_THE_BUILDER_LEVEL_1_DESC',	1,		1,		0),
+									('THE_BUILDER_LEVEL_2',				'OCC_THE_BUILDER_LEVEL_2_NAME',		'OCC_THE_BUILDER_LEVEL_2_DESC',	1,		1,		0),
+									('THE_BUILDER_LEVEL_3',				'OCC_THE_BUILDER_LEVEL_3_NAME',		'OCC_THE_BUILDER_LEVEL_3_DESC',	1,		1,		0);
+									
+INSERT INTO GovernorPromotionPrereqs	(GovernorPromotionType, 			PrereqGovernorPromotion)
+VALUES  								('THE_BUILDER_LEVEL_1',			'THE_BUILDER_LEVEL_0'),
+										('THE_BUILDER_LEVEL_2',			'THE_BUILDER_LEVEL_1'),
+										('THE_BUILDER_LEVEL_3',			'THE_BUILDER_LEVEL_2');
+
+INSERT INTO GovernorPromotionConditions	(GovernorPromotionType, 			HiddenWithoutPrereqs,	EarliestGameEra)
+VALUES  								('THE_BUILDER_LEVEL_0',			0,						NULL),
+										('THE_BUILDER_LEVEL_1',			1,						'ERA_MEDIEVAL'),
+										('THE_BUILDER_LEVEL_2',			1,						'ERA_INDUSTRIAL'),
+										('THE_BUILDER_LEVEL_3',			1,						'ERA_ATOMIC');
+
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_BUILDER_LEVEL_0', 'OCC_MOD_THE_BUILDER_LEVEL_0');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_BUILDER_LEVEL_1', 'OCC_MOD_THE_BUILDER_LEVEL_1');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_BUILDER_LEVEL_2', 'OCC_MOD_THE_BUILDER_LEVEL_2');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_BUILDER_LEVEL_3', 'OCC_MOD_THE_BUILDER_LEVEL_3');
+
+INSERT INTO Modifiers 	(ModifierId, 						ModifierType,													OwnerRequirementSetId,	SubjectRequirementSetId) 
+VALUES 					('OCC_MOD_THE_BUILDER_LEVEL_0', 	'MODIFIER_PLAYER_CAPITAL_CITY_ADJUST_CITY_YIELD_CHANGE',		NULL,					NULL),	
+						('OCC_MOD_THE_BUILDER_LEVEL_1', 	'MODIFIER_PLAYER_CITIES_ADJUST_DISTRICT_PRODUCTION_MODIFIER',	NULL,					NULL),	
+						('OCC_MOD_THE_BUILDER_LEVEL_2', 	'MODIFIER_PLAYER_ADJUST_VALID_IMPROVEMENT',						NULL,					NULL),	
+						('OCC_MOD_THE_BUILDER_LEVEL_3', 	'MODIFIER_PLAYER_CAPITAL_CITY_ADJUST_CITY_YIELD_CHANGE',		NULL,					NULL);							
+									
+INSERT INTO ModifierArguments 	(ModifierId, 						Name,					Value) 
+VALUES 							('OCC_MOD_THE_BUILDER_LEVEL_0', 	'Amount',				5),
+								('OCC_MOD_THE_BUILDER_LEVEL_0', 	'YieldType',			'YIELD_FOOD'),
+								('OCC_MOD_THE_BUILDER_LEVEL_1', 	'Amount',				25),
+								('OCC_MOD_THE_BUILDER_LEVEL_2', 	'ImprovementType',		'IMPROVEMENT_CITY_PARK'),
+								('OCC_MOD_THE_BUILDER_LEVEL_3', 	'YieldType',			'YIELD_FOOD'),
+								('OCC_MOD_THE_BUILDER_LEVEL_3', 	'Amount',				25);	
+
+-- Reyna GOVERNOR_THE_MERCHANT	
+DELETE FROM GovernorsCannotAssign
+WHERE GovernorType = 'GOVERNOR_THE_MERCHANT';
+
+INSERT INTO GovernorsCannotAssign (GovernorType, CannotAssign) VALUES ('GOVERNOR_THE_MERCHANT', 1);
+
+DELETE FROM GovernorPromotionSets
+WHERE GovernorType = 'GOVERNOR_THE_MERCHANT';
+
+INSERT INTO Types (Type, Kind) VALUES ('THE_MERCHANT_LEVEL_0', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_MERCHANT_LEVEL_1', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_MERCHANT_LEVEL_2', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_MERCHANT_LEVEL_3', 'KIND_GOVERNOR_PROMOTION');
+
+INSERT INTO GovernorPromotionSets	(GovernorType, 						GovernorPromotion)
+VALUES  							('GOVERNOR_THE_MERCHANT',			'THE_MERCHANT_LEVEL_0'), 
+									('GOVERNOR_THE_MERCHANT',			'THE_MERCHANT_LEVEL_1'), 
+									('GOVERNOR_THE_MERCHANT',			'THE_MERCHANT_LEVEL_2'), 
+									('GOVERNOR_THE_MERCHANT',			'THE_MERCHANT_LEVEL_3'); 
+
+INSERT INTO GovernorPromotions		(GovernorPromotionType, 			Name,								Description,						Level,	Column,	BaseAbility)
+VALUES  							('THE_MERCHANT_LEVEL_0',				'OCC_THE_MERCHANT_LEVEL_0_NAME',		'OCC_THE_MERCHANT_LEVEL_0_DESC',	0,		1,		1),
+									('THE_MERCHANT_LEVEL_1',				'OCC_THE_MERCHANT_LEVEL_1_NAME',		'OCC_THE_MERCHANT_LEVEL_1_DESC',	1,		1,		0),
+									('THE_MERCHANT_LEVEL_2',				'OCC_THE_MERCHANT_LEVEL_2_NAME',		'OCC_THE_MERCHANT_LEVEL_2_DESC',	1,		1,		0),
+									('THE_MERCHANT_LEVEL_3',				'OCC_THE_MERCHANT_LEVEL_3_NAME',		'OCC_THE_MERCHANT_LEVEL_3_DESC',	1,		1,		0);
+									
+INSERT INTO GovernorPromotionPrereqs	(GovernorPromotionType, 			PrereqGovernorPromotion)
+VALUES  								('THE_MERCHANT_LEVEL_1',			'THE_MERCHANT_LEVEL_0'),
+										('THE_MERCHANT_LEVEL_2',			'THE_MERCHANT_LEVEL_1'),
+										('THE_MERCHANT_LEVEL_3',			'THE_MERCHANT_LEVEL_2');
+
+INSERT INTO GovernorPromotionConditions	(GovernorPromotionType, 			HiddenWithoutPrereqs,	EarliestGameEra)
+VALUES  								('THE_MERCHANT_LEVEL_0',			0,						NULL),
+										('THE_MERCHANT_LEVEL_1',			1,						'ERA_MEDIEVAL'),
+										('THE_MERCHANT_LEVEL_2',			1,						'ERA_INDUSTRIAL'),
+										('THE_MERCHANT_LEVEL_3',			1,						'ERA_ATOMIC');
+
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_MERCHANT_LEVEL_0', 'OCC_MOD_THE_MERCHANT_LEVEL_0');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_MERCHANT_LEVEL_1', 'OCC_MOD_THE_MERCHANT_LEVEL_1A');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_MERCHANT_LEVEL_1', 'OCC_MOD_THE_MERCHANT_LEVEL_1B');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_MERCHANT_LEVEL_2', 'OCC_MOD_THE_MERCHANT_LEVEL_2');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_MERCHANT_LEVEL_3', 'OCC_MOD_THE_MERCHANT_LEVEL_3');
+
+INSERT INTO Modifiers 	(ModifierId, 						ModifierType,															OwnerRequirementSetId,	SubjectRequirementSetId) 
+VALUES 					('OCC_MOD_THE_MERCHANT_LEVEL_0', 	'MODIFIER_PLAYER_CAPITAL_CITY_ADJUST_CITY_YIELD_CHANGE',				NULL,					NULL),	
+						('OCC_MOD_THE_MERCHANT_LEVEL_1A', 	'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_YIELD',								NULL,					NULL),	
+						('OCC_MOD_THE_MERCHANT_LEVEL_1B', 	'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_YIELD',								NULL,					NULL),	
+						('OCC_MOD_THE_MERCHANT_LEVEL_2', 	'MODIFIER_PLAYER_DISTRICTS_ADJUST_YIELD_MODIFIER',						NULL,					'DISTRICT_IS_COMMERCIAL_HUB'),	
+						('OCC_MOD_THE_MERCHANT_LEVEL_3', 	'MODIFIER_PLAYER_DISTRICTS_ADJUST_YIELD_BASED_ON_ADJACENCY_BONUS',		NULL,					'DISTRICT_IS_COMMERCIAL_HUB');							
+									
+INSERT INTO ModifierArguments 	(ModifierId, 						Name,					Value) 
+VALUES 							('OCC_MOD_THE_MERCHANT_LEVEL_0', 	'Amount',				7),
+								('OCC_MOD_THE_MERCHANT_LEVEL_0', 	'YieldType',			'YIELD_GOLD'),
+								('OCC_MOD_THE_MERCHANT_LEVEL_1A', 	'Amount',				5),
+								('OCC_MOD_THE_MERCHANT_LEVEL_1A', 	'YieldType',			'YIELD_GOLD'),
+								('OCC_MOD_THE_MERCHANT_LEVEL_1B', 	'Amount',				2),
+								('OCC_MOD_THE_MERCHANT_LEVEL_1B', 	'YieldType',			'YIELD_SCIENCE'),
+								('OCC_MOD_THE_MERCHANT_LEVEL_2', 	'Amount',				150),
+								('OCC_MOD_THE_MERCHANT_LEVEL_2', 	'YieldType',			'YIELD_GOLD'),
+								('OCC_MOD_THE_MERCHANT_LEVEL_3', 	'YieldTypeToMirror',	'YIELD_GOLD'),
+								('OCC_MOD_THE_MERCHANT_LEVEL_3', 	'YieldTypeToGrant',		'YIELD_SCIENCE');							

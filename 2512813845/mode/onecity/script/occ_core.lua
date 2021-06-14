@@ -230,15 +230,22 @@ function OneCity_Init()
 	for _,iPlayerID in ipairs(pAllPlayerIDs) do
 	
 		local pPlayer : object = Players[iPlayerID];
-		local pPlayerUnits : object = pPlayer:GetUnits();
-		-- Disable Settler builds
-		pPlayerUnits:SetBuildDisabled(GameInfo.Units["UNIT_SETTLER"].Index, true);
-		if pPlayer:IsHuman() == false then
-			pPlayerUnits:SetBuildDisabled(GameInfo.Units["UNIT_EXPANSIONIST"].Index, true);
+		if pPlayer ~= nil then
+			local pPlayerUnits : object = pPlayer:GetUnits();
+			local pPlayerGovernors = pPlayer:GetGovernors();
+			-- Disable Settler builds
+			pPlayerUnits:SetBuildDisabled(GameInfo.Units["UNIT_SETTLER"].Index, true);
+			if Game.GetCurrentGameTurn() == GameConfiguration.GetStartTurn() and pPlayerGovernors ~= nil then
+				pPlayerGovernors:ChangeGovernorPoints(1)
+			end
+			if pPlayer:IsHuman() == false then
+				pPlayerUnits:SetBuildDisabled(GameInfo.Units["UNIT_EXPANSIONIST"].Index, true);
 			else
-			pPlayerUnits:SetBuildDisabled(GameInfo.Units["UNIT_EXPANSIONIST"].Index, false);
+				pPlayerUnits:SetBuildDisabled(GameInfo.Units["UNIT_EXPANSIONIST"].Index, false);
+			end
 		end
 	end
+	
 end
 
 function OnWaveTriggered(turn)

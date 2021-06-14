@@ -38,6 +38,110 @@
         </Replace> 	
 		 <Replace Tag="LOC_SCENARIO_HUD_CHARGES" language="en">
 		    <Text>OUTER WALL CHARGES</Text>
-        </Replace> 			
+        </Replace> 		
+
+		<!--- Governors --->
+		<Replace  Tag="LOC_GOVERNOR_THE_EDUCATOR_DESCRIPTION"  language="en">
+			<Text>{LOC_GOVERNOR_THE_EDUCATOR_NAME} is focused on the cultivation of [ICON_SCIENCE] Scientific endeavors in the city. Be sure to combo him with good Campus placement to maximise your [ICON_SCIENCE] Science output.</Text>
+		</Replace> 
+		 <Replace Tag="OCC_THE_EDUCATOR_LEVEL_0_NAME" language="en">
+		    <Text>The Educator</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_EDUCATOR_LEVEL_1_NAME" language="en">
+		    <Text>College of Scholars</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_EDUCATOR_LEVEL_2_NAME" language="en">
+		    <Text>Ground Studies</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_EDUCATOR_LEVEL_3_NAME" language="en">
+		    <Text>City of Lights</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_EDUCATOR_LEVEL_0_DESC" language="en">
+		    <Text>+15% [ICON_Science] Science in your Capital</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_EDUCATOR_LEVEL_1_DESC" language="en">
+		    <Text>Requires Medieval Era, +10 [ICON_Science] Science</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_EDUCATOR_LEVEL_2_DESC" language="en">
+		    <Text>Requires Industrial Era, +1 [ICON_Science] Science on every land tiles</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_EDUCATOR_LEVEL_3_DESC" language="en">
+		    <Text>Requires Atomic Era, +25 [ICON_Science] Science</Text>
+        </Replace> 	
+
+		 <Replace Tag="OCC_THE_CARDINAL_LEVEL_0_NAME" language="en">
+		    <Text>The Cardinal</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_CARDINAL_LEVEL_1_NAME" language="en">
+		    <Text>Land of the Beautiful</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_CARDINAL_LEVEL_2_NAME" language="en">
+		    <Text>Holy Pope</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_CARDINAL_LEVEL_3_NAME" language="en">
+		    <Text>Patron of Arts</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_CARDINAL_LEVEL_0_DESC" language="en">
+		    <Text>+5 [ICON_GreatProphet] Great Prophet point</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_CARDINAL_LEVEL_1_DESC" language="en">
+		    <Text>Requires Medieval Era, +1 [ICON_Culture] Culture on every land tiles</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_CARDINAL_LEVEL_2_DESC" language="en">
+		    <Text>Requires Industrial Era, +25% [ICON_Faith] Faith in your Capital</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_CARDINAL_LEVEL_3_DESC" language="en">
+		    <Text>Requires Atomic Era, +200% [ICON_Tourism] Tourism in your Empire</Text>		
+        </Replace> 	
+
+		 <Replace Tag="OCC_THE_BUILDER_LEVEL_0_NAME" language="en">
+		    <Text>The Surveyor</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_BUILDER_LEVEL_1_NAME" language="en">
+		    <Text>Building Plan</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_BUILDER_LEVEL_2_NAME" language="en">
+		    <Text>Urbanism</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_BUILDER_LEVEL_3_NAME" language="en">
+		    <Text>Cornucopia</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_BUILDER_LEVEL_0_DESC" language="en">
+		    <Text>+5 [ICON_Food] Food in your Capital</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_BUILDER_LEVEL_1_DESC" language="en">
+		    <Text>Requires Medieval Era, +25% [ICON_Production] Production toward Districts</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_BUILDER_LEVEL_2_DESC" language="en">
+		    <Text>Requires Industrial Era, Grant access to the {LOC_IMPROVEMENT_CITY_PARK_NAME} </Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_BUILDER_LEVEL_3_DESC" language="en">
+		    <Text>+25 [ICON_Food] Food in your Capital</Text>		
+        </Replace> 
+
+		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_0_NAME" language="en">
+		    <Text>The Financier</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_1_NAME" language="en">
+		    <Text>Trade Center</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_2_NAME" language="en">
+		    <Text>Regional Market</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_3_NAME" language="en">
+		    <Text>Science Funding</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_0_DESC" language="en">
+		    <Text>+7 [ICON_Gold] Gold in your Capital</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_1_DESC" language="en">
+		    <Text>Requires Medieval Era, +5 [ICON_Gold] Gold and +2 [ICON_Science] Science for each Trade Route</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_2_DESC" language="en">
+		    <Text>Requires Industrial Era, +150% [ICON_Gold] Gold Adjacency on Commercial Hub District</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_3_DESC" language="en">
+		    <Text>Requires Atomic Era, Commercial Hub District has bonus [ICON_Science] Science equals to its [ICON_Gold] Gold Adjacency</Text>		
+        </Replace>		
     </LocalizedText>
 </GameData>

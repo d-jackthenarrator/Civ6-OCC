@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mod id="619ac86e-d99d-4bf3-b8f0-8c5b8c402171" version="001">
+<Mod id="619ac86e-d99d-4bf3-b8f0-8c5b8c402171" version="002">
 
   <Properties>
     <Name>LOC_OCC_TITLE</Name>
     <Description>LOC_OCC_DESCRIPTION</Description>
 	<Created>1</Created>
-	<Version>1</Version>
+	<Version>2</Version>
     <Teaser>LOC_OCC_TEASER</Teaser>
     <Authors>D. / Jack The Narrator</Authors>
 	<SpecialThanks>Civfanatics.com, CanuckSoldier, the [NnJa] crew, Auguthy, iElden</SpecialThanks>
@@ -14,16 +14,16 @@
   
 	<LocalizedText>
 		<Text id="LOC_OCC_TITLE">
-			<en_US>One City Challenge BETA 001</en_US>
-			<fr_FR>One City Challenge BETA 001</fr_FR>
+			<en_US>One City Challenge BETA 002</en_US>
+			<fr_FR>One City Challenge BETA 002</fr_FR>
 		</Text>
 		<Text id="LOC_OCC_TEASER">
 			<en_US>Play a fast Civilization experience with only one city</en_US>
             <fr_FR>Jouez une partie rapide de Civilization avec une seule citee</fr_FR>
 		</Text>
 		<Text id="LOC_OCC_DESCRIPTION">
-			<en_US>One [NEWLINE][NEWLINE] Two [NEWLINE][NEWLINE] Three</en_US>
-            <fr_FR>One [NEWLINE][NEWLINE] Two [NEWLINE][NEWLINE] Three</fr_FR>
+			<en_US>"Thee shall only have one city..." [NEWLINE][NEWLINE]Plan ahead to build an unchallenged military center or a tower of Babel challenging your foes! [NEWLINE][NEWLINE]Cannot train Settler or keep captured cities.</en_US>
+            <fr_FR>"Ils n'auront qu'une seule citee..." [NEWLINE][NEWLINE]Planifiez votre strategie pour creer un centre militaire omnipotent ou creez une tour de Babel qui rayonera sur vos enemis! [NEWLINE][NEWLINE]Vous ne pouvez pas faire de Colons ou conserver les villes que vous capturez.</fr_FR>
 		</Text>
 	</LocalizedText>
 	
@@ -123,7 +123,7 @@
 
 	<UpdateDatabase id="OCC_SQL">
             <Properties>
-                <LoadOrder>20000</LoadOrder>
+                <LoadOrder>200000</LoadOrder>
             </Properties>
 			<Criteria>OneCityChallenge_Mode_Expansion2</Criteria>
 			<File>mode/onecity/sql/core.sql</File>
