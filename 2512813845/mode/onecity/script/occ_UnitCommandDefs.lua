@@ -13,6 +13,7 @@ include "occ_StateUtils"
 
 m_ScenarioUnitCommands = {};
 local ms_WallImprov :number		= GameInfo.Improvements["IMPROVEMENT_GREAT_WALL"].Index;
+local ms_RallyImprov :number		= GameInfo.Improvements["IMPROVEMENT_RALLY_POINT"].Index;
 --[[ =======================================================================
 	BUILDWALL
 
@@ -89,3 +90,81 @@ function m_ScenarioUnitCommands.BUILDWALL.IsDisabled(pUnit : object)
 
 	return false;
 end
+
+--[[ =======================================================================
+	SETRALLY
+
+	Create the Wall 
+-- =========================================================================]]
+m_ScenarioUnitCommands.SETRALLY = {};
+
+-- Study Command State Properties
+m_ScenarioUnitCommands.SETRALLY.Properties = {};
+
+-- Study Command UI Data
+m_ScenarioUnitCommands.SETRALLY.EventName		= "ScenarioCommand_SETRALLY";
+m_ScenarioUnitCommands.SETRALLY.CategoryInUI	= "SPECIFIC";
+m_ScenarioUnitCommands.SETRALLY.Icon			= "ICON_UNITOPERATION_DEPLOY";
+m_ScenarioUnitCommands.SETRALLY.ToolTipString	= Locale.Lookup("LOC_UNITCOMMAND_SETRALLY_NAME") .. "[NEWLINE][NEWLINE]" .. 
+												Locale.Lookup("LOC_UNITCOMMAND_SETRALLY_DESCRIPTION");
+m_ScenarioUnitCommands.SETRALLY.DisabledToolTipString = Locale.Lookup("LOC_UNITCOMMAND_SETRALLY_DISABLED_TT");
+m_ScenarioUnitCommands.SETRALLY.VisibleInUI	= true;
+
+-- ===========================================================================
+function m_ScenarioUnitCommands.SETRALLY.CanUse(pUnit : object)
+	if (pUnit == nil) then
+		return false;
+	end
+
+	return GameInfo.Units[pUnit:GetType()].UnitType == "UNIT_EXPANSIONIST";
+end
+
+-- ===========================================================================
+function m_ScenarioUnitCommands.SETRALLY.IsVisible(pUnit : object)
+	return pUnit ~= nil and pUnit:GetMovesRemaining() > 0;
+end
+
+-- ===========================================================================
+function m_ScenarioUnitCommands.SETRALLY.IsDisabled(pUnit : object)
+	if (pUnit == nil or pUnit:GetMovesRemaining() == 0) then
+		return true;
+	end
+	local eUnitOwner = pUnit:GetOwner()
+
+
+	local iPlotId : number = pUnit:GetPlotId();
+	local pPlot : object = Map.GetPlotByIndex(iPlotId);
+	if (pPlot == nil) then
+		return true;
+	end
+	local ePlotOwner = pPlot:GetOwner()
+	
+	-- Not in a city
+	local pCity : object = CityManager.GetCityAt(pPlot:GetX(), pPlot:GetY());
+	if (pCity ~= nil) then
+		return true;
+	end
+	
+	-- Not an improvement
+	if pPlot:GetImprovementType() > -1 then
+		return true;
+	end
+	
+	-- Not on a district
+	if (pPlot:GetDistrictType() > -1) then
+		return true;
+	end
+
+	-- Not on water
+	if (pPlot:IsWater() == true) then
+		return true;
+	end
+	
+	-- Not in foreign or neutral territory
+	if (ePlotOwner ~= eUnitOwner) then
+		return true;
+	end
+
+	return false;
+end
+

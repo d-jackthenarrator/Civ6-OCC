@@ -2,7 +2,7 @@
 -- One City Challenge by D. / Jack The Narrator
 --==========================================================================================================================
 -----------------------------------------------
--- Expensionist
+-- Expansionist
 -----------------------------------------------
 
 INSERT INTO Types (Type, Kind) VALUES ('UNIT_EXPANSIONIST', 'KIND_UNIT');
@@ -42,6 +42,30 @@ VALUES  (
 		'CIVIC_EARLY_EMPIRE'
 		);
 
+-----------------------------------------------
+-- Rally Point
+-----------------------------------------------
+
+INSERT INTO Types (Type, Kind) VALUES ('IMPROVEMENT_RALLY_POINT', 'KIND_IMPROVEMENT');
+INSERT INTO Improvements	(
+		ImprovementType,
+		Icon,		
+		PlunderType,
+		Buildable,
+		Appeal,
+		Name,		
+		Description
+		)
+VALUES  (
+		'IMPROVEMENT_RALLY_POINT',
+		'ICON_IMPROVEMENT_BARBARIAN_CAMP',	
+		'NO_PLUNDER', 
+		0,
+		'-1', 
+		'OCC_IMPROVEMENT_RALLY_POINT_NAME', 
+		'OCC_IMPROVEMENT_RALLY_POINT_DESC'
+		);
+
 
 -----------------------------------------------
 -- Create the new walls
@@ -66,8 +90,7 @@ UPDATE Improvements
 Set Buildable=0
 WHERE ImprovementType='IMPROVEMENT_GREAT_WALL';
 
-UPDATE Improvement_ValidBuildUnits
-Set UnitType='UNIT_EXPANSIONIST'
+DELETE FROM Improvement_ValidBuildUnits
 WHERE ImprovementType='IMPROVEMENT_GREAT_WALL';
 
 -----------------------------------------------
@@ -384,3 +407,65 @@ VALUES 							('OCC_MOD_THE_MERCHANT_LEVEL_0', 	'Amount',				7),
 								('OCC_MOD_THE_MERCHANT_LEVEL_2', 	'YieldType',			'YIELD_GOLD'),
 								('OCC_MOD_THE_MERCHANT_LEVEL_3', 	'YieldTypeToMirror',	'YIELD_GOLD'),
 								('OCC_MOD_THE_MERCHANT_LEVEL_3', 	'YieldTypeToGrant',		'YIELD_SCIENCE');							
+								
+-- Magnus GOVERNOR_THE_RESOURCE_MANAGER		
+DELETE FROM GovernorsCannotAssign
+WHERE GovernorType = 'GOVERNOR_THE_RESOURCE_MANAGER';
+
+INSERT INTO GovernorsCannotAssign (GovernorType, CannotAssign) VALUES ('GOVERNOR_THE_RESOURCE_MANAGER', 1);
+
+DELETE FROM GovernorPromotionSets
+WHERE GovernorType = 'GOVERNOR_THE_RESOURCE_MANAGER';
+
+INSERT INTO Types (Type, Kind) VALUES ('THE_RESOURCE_MANAGER_LEVEL_0', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_RESOURCE_MANAGER_LEVEL_1', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_RESOURCE_MANAGER_LEVEL_2', 'KIND_GOVERNOR_PROMOTION');
+INSERT INTO Types (Type, Kind) VALUES ('THE_RESOURCE_MANAGER_LEVEL_3', 'KIND_GOVERNOR_PROMOTION');
+
+INSERT INTO GovernorPromotionSets	(GovernorType, 						GovernorPromotion)
+VALUES  							('GOVERNOR_THE_RESOURCE_MANAGER',			'THE_RESOURCE_MANAGER_LEVEL_0'), 
+									('GOVERNOR_THE_RESOURCE_MANAGER',			'THE_RESOURCE_MANAGER_LEVEL_1'), 
+									('GOVERNOR_THE_RESOURCE_MANAGER',			'THE_RESOURCE_MANAGER_LEVEL_2'), 
+									('GOVERNOR_THE_RESOURCE_MANAGER',			'THE_RESOURCE_MANAGER_LEVEL_3'); 
+
+INSERT INTO GovernorPromotions		(GovernorPromotionType, 			Name,								Description,						Level,	Column,	BaseAbility)
+VALUES  							('THE_RESOURCE_MANAGER_LEVEL_0',				'OCC_THE_RESOURCE_MANAGER_LEVEL_0_NAME',		'OCC_THE_RESOURCE_MANAGER_LEVEL_0_DESC',	0,		1,		1),
+									('THE_RESOURCE_MANAGER_LEVEL_1',				'OCC_THE_RESOURCE_MANAGER_LEVEL_1_NAME',		'OCC_THE_RESOURCE_MANAGER_LEVEL_1_DESC',	1,		1,		0),
+									('THE_RESOURCE_MANAGER_LEVEL_2',				'OCC_THE_RESOURCE_MANAGER_LEVEL_2_NAME',		'OCC_THE_RESOURCE_MANAGER_LEVEL_2_DESC',	1,		1,		0),
+									('THE_RESOURCE_MANAGER_LEVEL_3',				'OCC_THE_RESOURCE_MANAGER_LEVEL_3_NAME',		'OCC_THE_RESOURCE_MANAGER_LEVEL_3_DESC',	1,		1,		0);
+									
+INSERT INTO GovernorPromotionPrereqs	(GovernorPromotionType, 			PrereqGovernorPromotion)
+VALUES  								('THE_RESOURCE_MANAGER_LEVEL_1',			'THE_RESOURCE_MANAGER_LEVEL_0'),
+										('THE_RESOURCE_MANAGER_LEVEL_2',			'THE_RESOURCE_MANAGER_LEVEL_1'),
+										('THE_RESOURCE_MANAGER_LEVEL_3',			'THE_RESOURCE_MANAGER_LEVEL_2');
+
+INSERT INTO GovernorPromotionConditions	(GovernorPromotionType, 			HiddenWithoutPrereqs,	EarliestGameEra)
+VALUES  								('THE_RESOURCE_MANAGER_LEVEL_0',			0,						NULL),
+										('THE_RESOURCE_MANAGER_LEVEL_1',			1,						'ERA_MEDIEVAL'),
+										('THE_RESOURCE_MANAGER_LEVEL_2',			1,						'ERA_INDUSTRIAL'),
+										('THE_RESOURCE_MANAGER_LEVEL_3',			1,						'ERA_ATOMIC');
+
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_RESOURCE_MANAGER_LEVEL_0', 'OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_0');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_RESOURCE_MANAGER_LEVEL_1', 'OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_1A');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_RESOURCE_MANAGER_LEVEL_1', 'OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_1B');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_RESOURCE_MANAGER_LEVEL_2', 'OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_2');
+INSERT INTO GovernorPromotionModifiers (GovernorPromotionType, ModifierId) VALUES ('THE_RESOURCE_MANAGER_LEVEL_3', 'OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_3');
+
+INSERT INTO Modifiers 	(ModifierId, 						ModifierType,															OwnerRequirementSetId,	SubjectRequirementSetId) 
+VALUES 					('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_0', 	'MODIFIER_PLAYER_CAPITAL_CITY_ADJUST_CITY_YIELD_CHANGE',				NULL,					NULL),	
+						('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_1A', 	'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_YIELD',								NULL,					NULL),	
+						('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_1B', 	'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_YIELD',								NULL,					NULL),	
+						('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_2', 	'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',									NULL,					NULL),	
+						('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_3', 	'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER',					NULL,					NULL);							
+									
+INSERT INTO ModifierArguments 	(ModifierId, 						Name,					Value) 
+VALUES 							('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_0', 	'Amount',				4),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_0', 	'YieldType',			'YIELD_PRODUCTION'),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_1A', 	'Amount',				3),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_1A', 	'YieldType',			'YIELD_FOOD'),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_1B', 	'Amount',				3),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_1B', 	'YieldType',			'YIELD_PRODUCTION'),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_2', 	'Amount',				1),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_2', 	'YieldType',			'YIELD_PRODUCTION'),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_3', 	'Amount',				50),
+								('OCC_MOD_THE_RESOURCE_MANAGER_LEVEL_3', 	'YieldType',			'YIELD_PRODUCTION');							

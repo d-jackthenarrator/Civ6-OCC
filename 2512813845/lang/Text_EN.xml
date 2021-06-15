@@ -38,7 +38,30 @@
         </Replace> 	
 		 <Replace Tag="LOC_SCENARIO_HUD_CHARGES" language="en">
 		    <Text>OUTER WALL CHARGES</Text>
-        </Replace> 		
+        </Replace> 	
+
+		<!--- Rally Point --->	
+		<Replace Tag="OCC_IMPROVEMENT_RALLY_POINT_NAME" language="en">
+		    <Text>Rally Point</Text>
+        </Replace> 	
+		<Replace Tag="OCC_IMPROVEMENT_RALLY_POINT_DESC" language="en">
+		    <Text>Define the location where unit waves would spawn.</Text>
+        </Replace>
+		 <Replace Tag="OCC_SETRALLY_COMMAND_TEXT" language="en">
+		    <Text>Rally Point Set!</Text>
+        </Replace>
+		 <Replace Tag="OCC_SETRALLY_REMOVE_TEXT" language="en">
+		    <Text>Rally Point Removed!</Text>
+        </Replace> 
+		 <Replace Tag="LOC_UNITCOMMAND_SETRALLY_NAME" language="en">
+		    <Text>Create a Rally Point</Text>
+        </Replace>	
+		 <Replace Tag="LOC_UNITCOMMAND_SETRALLY_DESCRIPTION" language="en">
+		    <Text>Must be a valid tile in your territory. [NEWLINE]Unit waves will spawn from that point.</Text>
+        </Replace>	
+		 <Replace Tag="LOC_UNITCOMMAND_SETRALLY_DISABLED_TT" language="en">
+		    <Text>Must be in your territory. [NEWLINE]Cannot be on a City, District or another Improvement</Text>
+        </Replace>			
 
 		<!--- Governors --->
 		<Replace  Tag="LOC_GOVERNOR_THE_EDUCATOR_DESCRIPTION"  language="en">
@@ -143,5 +166,30 @@
 		 <Replace Tag="OCC_THE_MERCHANT_LEVEL_3_DESC" language="en">
 		    <Text>Requires Atomic Era, Commercial Hub District has bonus [ICON_Science] Science equals to its [ICON_Gold] Gold Adjacency</Text>		
         </Replace>		
+		
+		 <Replace Tag="OCC_THE_RESOURCE_MANAGER_LEVEL_0_NAME" language="en">
+		    <Text>The Stewart</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_RESOURCE_MANAGER_LEVEL_1_NAME" language="en">
+		    <Text>Production Center</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_RESOURCE_MANAGER_LEVEL_2_NAME" language="en">
+		    <Text>Productive Ground</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_RESOURCE_MANAGER_LEVEL_3_NAME" language="en">
+		    <Text>The One Turner</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_RESOURCE_MANAGER_LEVEL_0_DESC" language="en">
+		    <Text>+4 [ICON_Production] Production in your Capital</Text>
+        </Replace> 
+		 <Replace Tag="OCC_THE_RESOURCE_MANAGER_LEVEL_1_DESC" language="en">
+		    <Text>Requires Medieval Era, +3 [ICON_Food] Food and +3 [ICON_Production] Production for each Trade Route</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_RESOURCE_MANAGER_LEVEL_2_DESC" language="en">
+		    <Text>Requires Industrial Era, +1 [ICON_Production] Production on every tile of your Empire</Text>
+        </Replace> 	
+		 <Replace Tag="OCC_THE_RESOURCE_MANAGER_LEVEL_3_DESC" language="en">
+		    <Text>Requires Atomic Era, +50% [ICON_Production] Production in your Capital</Text>		
+        </Replace>	
     </LocalizedText>
 </GameData>

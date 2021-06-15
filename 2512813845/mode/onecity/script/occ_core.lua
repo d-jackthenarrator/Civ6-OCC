@@ -11,6 +11,7 @@ include "occ_Rules"
 -- ===========================================================================
 local b_onecity = false
 local ms_WallImprov :number		= GameInfo.Improvements["IMPROVEMENT_GREAT_WALL"].Index;
+local ms_RallyImprov :number		= GameInfo.Improvements["IMPROVEMENT_RALLY_POINT"].Index;
 local ms_ScoutWaveTurn = 5
 local ms_WaveSize = 4
 local ms_OnlineWaveInterval = 15
@@ -155,6 +156,17 @@ function OnGameTurnStarted_CheckBorder(turn)
 		end
 	end
 	
+	-- Cannot have ghost rally point
+
+	for iPlotIndex = 0, Map.GetPlotCount()-1, 1 do
+		local pPlot = Map.GetPlotByIndex(iPlotIndex)
+		if pPlot ~= nil then		
+			local pPlot_Owner = pPlot:GetOwner()
+			if (pPlot_Owner == NO_PLAYER ) and (pPlot:GetImprovementType() == ms_RallyImprov) then
+				ImprovementBuilder.SetImprovementType(pPlot, -1, NO_PLAYER); 		
+			end
+		end
+	end			
 
 
 end
@@ -274,7 +286,26 @@ function OnWaveTriggered(turn)
 				return
 			end
 		
-				
+			-- Has a rally point ?
+			local rally_plot = nil 
+			for iPlotIndex = 0, Map.GetPlotCount()-1, 1 do
+				local pPlot = Map.GetPlotByIndex(iPlotIndex)
+				if pPlot ~= nil then
+					local pPlot_Owner = pPlot:GetOwner()
+					if (pPlot_Owner ~=nil ) then
+						if pPlot_Owner == iPlayerID then
+							if pPlot:GetImprovementType() == ms_RallyImprov then
+								rally_plot = pPlot
+								for i = 1, unitNumber, 1 do
+									playerUnits:Create(unitIndex, rally_plot:GetX(), rally_plot:GetY())	
+								end	
+								return
+							end
+						end
+					end
+				end
+			end			
+			-- No rally point so spawn in Capital City		
 			local capitalCity = pPlayerCities:GetCapitalCity();
 			if capitalCity ~= nil then
 				for i = 1, unitNumber, 1 do

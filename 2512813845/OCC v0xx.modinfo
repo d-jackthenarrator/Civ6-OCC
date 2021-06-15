@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mod id="619ac86e-d99d-4bf3-b8f0-8c5b8c402171" version="002">
+<Mod id="619ac86e-d99d-4bf3-b8f0-8c5b8c402171" version="003">
 
   <Properties>
     <Name>LOC_OCC_TITLE</Name>
@@ -14,8 +14,8 @@
   
 	<LocalizedText>
 		<Text id="LOC_OCC_TITLE">
-			<en_US>One City Challenge BETA 002</en_US>
-			<fr_FR>One City Challenge BETA 002</fr_FR>
+			<en_US>One City Challenge BETA 003</en_US>
+			<fr_FR>One City Challenge BETA 003</fr_FR>
 		</Text>
 		<Text id="LOC_OCC_TEASER">
 			<en_US>Play a fast Civilization experience with only one city</en_US>
@@ -170,6 +170,7 @@
 	<File>mode/onecity/OneCity_Background.dds</File>
     <File>mode/onecity/expansionist/Expansionist_Units.dep</File>
     <File>mode/onecity/expansionist/ArtDefs/Units.artdef</File>
+	<File>mode/onecity/rallypoint/ArtDefs/Improvements.artdef</File>
 	<File>mode/onecity/sql/core.sql</File>
 	<File>mode/onecity/script/occ_StateUtils.lua</File>
 	<File>mode/onecity/script/occ_core.lua</File>
