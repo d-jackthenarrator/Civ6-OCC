@@ -136,6 +136,13 @@
 				<LuaReplace>mode/onecity/UI/Replacements/UnitPanel_occ.lua</LuaReplace>
 			</Properties>
 		</ReplaceUIScript>
+			  <ReplaceUIScript id="OCC_NotificationPanel" criteria="OneCityChallenge_Mode_Expansion2">
+			<Properties>
+				<LoadOrder>20000</LoadOrder>
+				<LuaContext>NotificationPanel</LuaContext>
+				<LuaReplace>mode/onecity/UI/Replacements/NotificationPanel_spy.lua</LuaReplace>
+			</Properties>
+		</ReplaceUIScript>
 		
 	
 	<ImportFiles id="OCC_Other">
@@ -149,6 +156,13 @@
 			<File>mode/onecity/script/occ_UnitCommands.lua</File>
 			<File>mode/onecity/script/occ_Rules.lua</File>
 			<File>mode/onecity/UI/Replacements/UnitPanel_occ.lua</File>
+			<File>mode/onecity/UI/Replacements/EspionageChooser.lua</File>
+			<File>mode/onecity/UI/Replacements/EspionageChooser.xml</File>
+			<File>mode/onecity/UI/Replacements/EspionageEscape.lua</File>
+			<File>mode/onecity/UI/Replacements/EspionageEscape.xml</File>
+			<File>mode/onecity/UI/Replacements/EspionagePopup.lua</File>
+			<File>mode/onecity/UI/Replacements/EspionagePopup.xml</File>
+			<File>mode/onecity/UI/Replacements/NotificationPanel_spy.lua</File>
 			 </Items>
      </ImportFiles>	
 	
@@ -178,6 +192,13 @@
 	<File>mode/onecity/script/occ_UnitCommands.lua</File>
 	<File>mode/onecity/script/occ_Rules.lua</File>
 	<File>mode/onecity/UI/Replacements/UnitPanel_occ.lua</File>
+	<File>mode/onecity/UI/Replacements/EspionageChooser.lua</File>
+	<File>mode/onecity/UI/Replacements/EspionageChooser.xml</File>
+	<File>mode/onecity/UI/Replacements/EspionageEscape.lua</File>
+	<File>mode/onecity/UI/Replacements/EspionageEscape.xml</File>
+	<File>mode/onecity/UI/Replacements/EspionagePopup.lua</File>
+	<File>mode/onecity/UI/Replacements/EspionagePopup.xml</File>
+	<File>mode/onecity/UI/Replacements/NotificationPanel_spy.lua</File>
 
 
     <File>icons/OneCity_Icons.xml</File>
